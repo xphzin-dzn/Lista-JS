@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comparar Campos de Texto</title>
+</head>
+<body>
+
+<h1>Comparar Campos de Texto</h1>
+
+<label for="campo1">Campo 1:</label>
+<input type="text" id="campo1">
+<br>
+<label for="campo2">Campo 2:</label>
+<input type="text" id="campo2">
+<br>
+<button onclick="compararCampos()">Comparar Campos</button>
+
+<script>
+function compararCampos() {
+    const campo1 = document.getElementById('campo1').value;
+    const campo2 = document.getElementById('campo2').value;
+
+    if (campo1 === campo2) {
+        alert("Os valores são iguais.");
+    } else {
+        alert("Os valores são diferentes.");
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Compras</title>
+</head>
+<body>
+
+<h1>Lista de Compras</h1>
+
+<button id="criarLista" onclick="criarLista()">Criar Lista</button>
+
+<ul id="listaCompras">
+</ul>
+
+<script>
+function criarLista() {
+    const itens = ['Alface', 'Cebola', 'Tomate', 'Couve'];
+    const listaCompras = document.getElementById('listaCompras');
+
+    let listaHTML = '';
+
+    for (let c = 0; c < itens.length; i++) {
+        listaHTML += '<li>' + itens[i] + '</li>';
+    }
+
+    listaCompras.innerHTML = listaHTML;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastrar Alunos</title>
+</head>
+<body>
+
+<h1>Cadastrar Alunos</h1>
+
+<label for="quantidadeAlunos">Quantidade de Alunos:</label>
+<input type="number" id="quantidadeAlunos" min="1">
+<button onclick="criarCampos()">Criar Campos</button>
+
+<div id="camposAlunos"></div>
+
+<script>
+function criarCampos() {
+    const quantidadeAlunosInput = document.getElementById('quantidadeAlunos');
+    const quantidadeAlunos = parseInt(quantidadeAlunosInput.value);
+
+    if (isNaN(quantidadeAlunos) || quantidadeAlunos < 1) {
+        alert("Digite um número válido maior que zero.");
+        return;
+    }
+
+    const camposAlunos = document.getElementById('camposAlunos');
+    camposAlunos.innerHTML = '';
+
+    for (let i = 1; i <= quantidadeAlunos; i++) {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'aluno' + i;
+        input.placeholder = 'Aluno ' + i;
+        input.style.display = 'block';
+        camposAlunos.appendChild(input);
+    }
+}
+</script>
+
+</body>
+</html>

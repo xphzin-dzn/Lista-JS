@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alterar Cor do Texto</title>
+</head>
+<body>
+
+<h1>Alterar Cor do Texto</h1>
+
+<select id="selecaoCor" onchange="alterarCorTexto()">
+    <option value="vermelho">Vermelho</option>
+    <option value="azul">Azul</option>
+    <option value="verde">Verde</option>
+</select>
+
+<p id="textoExibido">Texto com cor a ser alterada.</p>
+
+<script>
+function alterarCorTexto() {
+    const selecaoCor = document.getElementById('selecaoCor');
+    const textoExibido = document.getElementById('textoExibido');
+    const corSelecionada = selecaoCor.value;
+
+    if (corSelecionada === 'vermelho') {
+        textoExibido.style.color = 'red';
+    } else if (corSelecionada === 'azul') {
+        textoExibido.style.color = 'blue';
+    } else if (corSelecionada === 'verde') {
+        textoExibido.style.color = 'green';
+    }
+}
+</script>
+
+</body>
+</html>

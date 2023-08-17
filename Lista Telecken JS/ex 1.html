@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validação de Formulário</title>
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Formulário de Validação</h1>
+
+<form id="formulario" onsubmit="return validarFormulario()">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome">
+    <br>
+
+    <label for="data">Data:</label>
+    <input type="text" id="data" name="data">
+    <br>
+
+    <label for="telefone">Telefone:</label>
+    <input type="text" id="telefone" name="telefone">
+    <br>
+
+    <label for="cpf">CPF:</label>
+    <input type="text" id="cpf" name="cpf">
+    <br>
+
+    <label>Disciplinas:</label>
+    <input type="checkbox" name="disciplinas" value="disciplina1"> Disciplina 1
+    <input type="checkbox" name="disciplinas" value="disciplina2"> Disciplina 2
+    <input type="checkbox" name="disciplinas" value="disciplina3"> Disciplina 3
+    <br>
+
+    <label for="preco">Preço:</label>
+    <input type="text" id="preco" name="preco">
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <br>
+
+    <label>Tipo:</label>
+    <input type="radio" name="tipo" value="aluno"> Aluno
+    <input type="radio" name="tipo" value="visitante"> Visitante
+    <br>
+
+    <label for="idade">Idade:</label>
+    <input type="number" id="idade" name="idade">
+    <br>
+
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha">
+    <br>
+
+    <label for="confirmaSenha">Confirma Senha:</label>
+    <input type="password" id="confirmaSenha" name="confirmaSenha">
+    <br>
+
+    <button type="submit">Submeter</button>
+</form>
+
+<script>
+function validarFormulario() {
+    let erros = [];
+    const formulario = document.getElementById("formulario");
+    
+    const nome = formulario.nome.value;
+    const data = formulario.data.value;
+    const telefone = formulario.telefone.value;
+    const cpf = formulario.cpf.value;
+    const disciplinas = formulario.querySelectorAll('input[name="disciplinas"]:checked').length;
+    const preco = formulario.preco.value;
+    const email = formulario.email.value;
+    const tipo = formulario.querySelectorAll('input[name="tipo"]:checked').length;
+    const idade = parseInt(formulario.idade.value);
+    const senha = formulario.senha.value;
+    const confirmaSenha = formulario.confirmaSenha.value;
+    
+    if (nome === "") {
+        erros.push("Campo 'Nome' deve ser preenchido.");
+        formulario.nome.classList.add("error");
+    } else {
+        formulario.nome.classList.remove("error");
+    }
+
+    if (data.length !== 10) {
+        erros.push("Campo 'Data' deve ter 10 caracteres.");
+        formulario.data.classList.add("error");
+    } else {
+        formulario.data.classList.remove("error");
+    }
+
+    if (telefone.length < 8 || telefone.length > 10) {
+        erros.push("Campo 'Telefone' deve ter entre 8 e 10 caracteres.");
+        formulario.telefone.classList.add("error");
+    } else {
+        formulario.telefone.classList.remove("error");
+    }
+
+    if (cpf.length !== 11) {
+        erros.push("Campo 'CPF' deve ter 11 caracteres.");
+        formulario.cpf.classList.add("error");
+    } else {
+        formulario.cpf.classList.remove("error");
+    }
+
+    if (disciplinas === 0) {
+        erros.push("Selecione pelo menos uma 'Disciplina'.");
+    }
+
+    if (!preco.includes("R")) {
+        erros.push("Campo 'Preço' deve conter o caractere 'R'.");
+        formulario.preco.classList.add("error");
+    } else {
+        formulario.preco.classList.remove("error");
+    }
+
+    if (email === "" || !email.includes("@") || !email.includes(".")) {
+        erros.push("Campo 'Email' deve ser preenchido corretamente.");
+        formulario.email.classList.add("error");
+    } else {
+        formulario.email.classList.remove("error");
+    }
+
+    if (tipo === 0) {
+        erros.push("Escolha um 'Tipo' (Aluno ou Visitante).");
+    }
+
+    if (isNaN(idade) || idade < 0 || idade > 100) {
+        erros.push("Campo 'Idade' deve ser um número entre 0 e 100.");
+        formulario.idade.classList.add("error");
+    } else {
+        formulario.idade.classList.remove("error");
+    }
+
+    if (senha !== confirmaSenha || senha.length < 6) {
+        erros.push("Senhas não coincidem ou têm menos de 6 caracteres.");
+        formulario.senha.classList.add("error");
+        formulario.confirmaSenha.classList.add("error");
+    } else {
+        formulario.senha.classList.remove("error");
+        formulario.confirmaSenha.classList.remove("error");
+    }
+
+    if (erros.length > 0) {
+        alert("Por favor, corrija os seguintes erros:\n\n" + erros.join("\n"));
+        if (formulario.querySelectorAll(".error").length > 0) {
+            formulario.querySelectorAll(".error")[0].focus();
+        }
+        return false;
+    } else {
+        return true;
+    }
+}
+</script>
+
+</body>
+</html>

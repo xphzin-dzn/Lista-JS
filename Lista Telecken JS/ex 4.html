@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alterar Div</title>
+    <style>
+        .color-div {
+            width: 150px;
+            height: 150px;
+            background-color: lightblue;
+            transition: background-color 0.5s;
+        }
+
+        .position-div {
+            width: 150px;
+            height: 150px;
+            background-color: lightgreen;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            transition: left 0.5s, top 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Alterar Div</h1>
+
+<button onclick="alterarCor()">Alterar Cor</button>
+<button onclick="alterarPosicao()">Alterar Posição</button>
+
+<div id="colorDiv" class="color-div"></div>
+<div id="positionDiv" class="position-div"></div>
+
+<script>
+function alterarCor() {
+    const colorDiv = document.getElementById('colorDiv');
+    const novaCor = getRandomColor();
+    colorDiv.style.backgroundColor = novaCor;
+}
+
+function alterarPosicao() {
+    const positionDiv = document.getElementById('positionDiv');
+    const novaPosicaoLeft = Math.floor(Math.random() * (window.innerWidth - 150));
+    const novaPosicaoTop = Math.floor(Math.random() * (window.innerHeight - 150));
+    positionDiv.style.left = novaPosicaoLeft + 'px';
+    positionDiv.style.top = novaPosicaoTop + 'px';
+}
+
+function getRandomColor() {
+    const letras = '0123456789ABCDEF';
+    let cor = '#';
+    for (let i = 0; i < 6; i++) {
+        cor += letras[Math.floor(Math.random() * 16)];
+    }
+    return cor;
+}
+</script>
+
+</body>
+</html>

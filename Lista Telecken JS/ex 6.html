@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alterar Imagem</title>
+</head>
+<body>
+
+<h1>Alterar Imagem</h1>
+
+<select id="selecaoImagem" onchange="alterarImagem()">
+    <option value="imagem1">Imagem 1</option>
+    <option value="imagem2">Imagem 2</option>
+    <option value="imagem3">Imagem 3</option>
+</select>
+
+<img id="imagemExibida" src="" alt="Imagem Exibida">
+
+<script>
+function alterarImagem() {
+    const selecaoImagem = document.getElementById('selecaoImagem');
+    const imagemExibida = document.getElementById('imagemExibida');
+    const opcaoSelecionada = selecaoImagem.value;
+
+    if (opcaoSelecionada === 'imagem1') {
+        imagemExibida.src = 'imagem1.jpg';
+    } else if (opcaoSelecionada === 'imagem2') {
+        imagemExibida.src = 'imagem2.jpg';
+    } else if (opcaoSelecionada === 'imagem3') {
+        imagemExibida.src = 'imagem3.jpg';
+    }
+}
+</script>
+
+</body>
+</html>
